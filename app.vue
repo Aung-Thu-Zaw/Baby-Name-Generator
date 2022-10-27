@@ -6,29 +6,123 @@
       <div class="option-container">
         <h4>1) Choose a gender</h4>
         <div class="option-buttons">
-          <button class="option option-left">Boy</button>
-          <button class="option">Unisex</button>
-          <button class="option option-right">Girl</button>
+          <button
+            class="option option-left"
+            :class="{ 'option-active': options.gender === 'Boy' }"
+            @click="options.gender = Gender.BOY"
+          >
+            Boy
+          </button>
+          <button
+            class="option"
+            :class="{ 'option-active': options.gender === 'Unisex' }"
+            @click="options.gender = Gender.UNISEX"
+          >
+            Unisex
+          </button>
+          <button
+            class="option option-right"
+            :class="{ 'option-active': options.gender === 'Girl' }"
+            @click="options.gender = Gender.GIRL"
+          >
+            Girl
+          </button>
         </div>
       </div>
       <div class="option-container">
         <h4>2) Choose the name's popularity</h4>
         <div class="option-buttons">
-          <button class="option option-left">Trendy</button>
-          <button class="option option-right">Unique</button>
+          <button
+            class="option option-left"
+            :class="{ 'option-active': options.popularity === 'Trendy' }"
+            @click="options.popularity = Popularity.TRENDY"
+          >
+            Trendy
+          </button>
+          <button
+            class="option option-right"
+            :class="{ 'option-active': options.popularity === 'Unique' }"
+            @click="options.popularity = Popularity.UNIQUE"
+          >
+            Unique
+          </button>
         </div>
       </div>
       <div class="option-container">
         <h4>3) Choose the name's length</h4>
         <div class="option-buttons">
-          <button class="option option-left">Long</button>
-          <button class="option">All</button>
-          <button class="option option-right">Short</button>
+          <button
+            class="option option-left"
+            :class="{ 'option-active': options.length === 'Long' }"
+            @click="options.length = Length.LONG"
+          >
+            Long
+          </button>
+          <button
+            class="option"
+            :class="{ 'option-active': options.length === 'All' }"
+            @click="options.length = Length.ALL"
+          >
+            All
+          </button>
+          <button
+            class="option option-right"
+            :class="{ 'option-active': options.length === 'Short' }"
+            @click="options.length = Length.SHORT"
+          >
+            Short
+          </button>
         </div>
       </div>
     </div>
   </div>
+
+  <div>
+    {{ options.gender }}
+    <br />
+    {{ options.length }}
+    <br />
+    {{ options.popularity }}
+  </div>
 </template>
+
+<script setup lang="ts">
+// Define Specifi Include Value
+enum Gender {
+  GIRL = "Girl",
+  UNISEX = "Unisex",
+  BOY = "Boy",
+}
+enum Popularity {
+  TRENDY = "Trendy",
+  UNIQUE = "Unique",
+}
+enum Length {
+  LONG = "Long",
+  ALL = "All",
+  SHORT = "Short",
+}
+
+//Interface is give a pair of key and type
+// Define Specifi key in our object contains
+interface OptionsState {
+  gender: Gender;
+  popularity: Popularity;
+  length: Length;
+}
+
+// const obj: OptionsState = {
+//   gender: Gender.GIRL,
+//   length: Length.SHORT,
+//   popularity: Popularity.UNIQUE,
+// };
+
+const options = reactive<OptionsState>({
+  gender: Gender.GIRL,
+  length: Length.SHORT,
+  popularity: Popularity.UNIQUE,
+});
+</script>
 
 <style scoped>
 .container {
