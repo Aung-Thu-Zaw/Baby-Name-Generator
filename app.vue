@@ -74,27 +74,23 @@
           </button>
         </div>
       </div>
-      <button class="primary">Find Names</button>
+      <button class="primary" @click="computeSelectedNames">Find Names</button>
     </div>
-
-    
   </div>
 
-  <div>
+  <!-- <div>
     {{ options.gender }}
     <br />
     {{ options.length }}
     <br />
     {{ options.popularity }}
     <br />
-    {{ names }}
-  </div>
+    {{ selectedNames }}
+  </div> -->
 </template>
 
 <script setup lang="ts">
-
-import {Gender,Popularity,Length,names} from "@/data"
-
+import { Gender, Popularity, Length, names } from "@/data";
 
 //Interface is give a pair of key and type
 // Define Specifi key in our object contains
@@ -116,8 +112,22 @@ const options = reactive<OptionsState>({
   popularity: Popularity.UNIQUE,
 });
 
+const computeSelectedNames = () => {
+  const filterNames = names
+    .filter((name) => name.gender === options.gender)
+    .filter((name) => name.popularity === options.popularity)
+    .filter((name) => {
+      if (options.length === Length.ALL) return true;
+      else return name.length === options.length;
+    });
+
+  selectedNames.value = filterNames.map((name) => name.name);
+};
+
+// This array needed only name string
 const selectedNames = ref<string[]>([]);
 
+console.log("this is a selected names:", selectedNames);
 </script>
 
 <style scoped>
