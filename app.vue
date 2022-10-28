@@ -74,7 +74,10 @@
           </button>
         </div>
       </div>
+      <button class="primary">Find Names</button>
     </div>
+
+    
   </div>
 
   <div>
@@ -83,25 +86,15 @@
     {{ options.length }}
     <br />
     {{ options.popularity }}
+    <br />
+    {{ names }}
   </div>
 </template>
 
 <script setup lang="ts">
-// Define Specifi Include Value
-enum Gender {
-  GIRL = "Girl",
-  UNISEX = "Unisex",
-  BOY = "Boy",
-}
-enum Popularity {
-  TRENDY = "Trendy",
-  UNIQUE = "Unique",
-}
-enum Length {
-  LONG = "Long",
-  ALL = "All",
-  SHORT = "Short",
-}
+
+import {Gender,Popularity,Length,names} from "@/data"
+
 
 //Interface is give a pair of key and type
 // Define Specifi key in our object contains
@@ -122,6 +115,9 @@ const options = reactive<OptionsState>({
   length: Length.SHORT,
   popularity: Popularity.UNIQUE,
 });
+
+const selectedNames = ref<string[]>([]);
+
 </script>
 
 <style scoped>
@@ -168,5 +164,15 @@ const options = reactive<OptionsState>({
 .option-active {
   background-color: rgb(249, 87, 89);
   color: white;
+}
+.primary {
+  background-color: rgb(249, 87, 89);
+  color: white;
+  border-radius: 6.5rem;
+  border: none;
+  padding: 0.75rem 4rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
 }
 </style>
