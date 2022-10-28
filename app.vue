@@ -13,7 +13,13 @@
     </div>
 
     <div class="card-container">
-      <CardName v-for="name in selectedNames" :key="name" :name="name" />
+      <CardName
+        v-for="(name, index) in selectedNames"
+        :key="name"
+        :name="name"
+        :index="index"
+        @remove="() => removeName(index)"
+      />
     </div>
   </div>
 </template>
@@ -64,6 +70,13 @@ const optionsArray = [
     buttons: [Length.SHORT, Length.ALL, Length.LONG],
   },
 ];
+
+const removeName = (index: number) => {
+  const filteredNames = [...selectedNames.value];
+  filteredNames.splice(index, 1);
+  selectedNames.value = filteredNames;
+
+};
 </script>
 
 <style scoped>
