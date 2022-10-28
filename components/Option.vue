@@ -13,53 +13,6 @@
       </button>
     </div>
   </div>
-
-  <!-- <div class="option-container">
-    <h4>2) Choose the name's popularity</h4>
-    <div class="option-buttons">
-      <button
-        class="option option-left"
-        :class="{ 'option-active': options.popularity === 'Trendy' }"
-        @click="options.popularity = Popularity.TRENDY"
-      >
-        Trendy
-      </button>
-      <button
-        class="option option-right"
-        :class="{ 'option-active': options.popularity === 'Unique' }"
-        @click="options.popularity = Popularity.UNIQUE"
-      >
-        Unique
-      </button>
-    </div>
-  </div>
-
-  <div class="option-container">
-    <h4>3) Choose the name's length</h4>
-    <div class="option-buttons">
-      <button
-        class="option option-left"
-        :class="{ 'option-active': options.length === 'Long' }"
-        @click="options.length = Length.LONG"
-      >
-        Long
-      </button>
-      <button
-        class="option"
-        :class="{ 'option-active': options.length === 'All' }"
-        @click="options.length = Length.ALL"
-      >
-        All
-      </button>
-      <button
-        class="option option-right"
-        :class="{ 'option-active': options.length === 'Short' }"
-        @click="options.length = Length.SHORT"
-      >
-        Short
-      </button>
-    </div>
-  </div> -->
 </template>
 
 
